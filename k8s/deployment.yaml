@@ -44,6 +44,7 @@ kind: Deployment
 metadata:
   name: web
 spec:
+  replicas: 8
   selector:
     matchLabels:
       app: web
@@ -51,6 +52,10 @@ spec:
     metadata: 
       labels:
         app: web
+      annotations: 
+        prometheus.io/scrape: "true"
+        prometheus.io/scrape: "8080"
+        prometheus.io/scrape: "/metrics"
     spec:
       containers:
       - name: web
